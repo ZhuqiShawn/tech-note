@@ -3,7 +3,7 @@
 
 | 笔记内容 |                       链接                       |
 | :------- | :----------------------------------------------: |
-| Git      | https://github.com/ZhuqiShawn/tech-note/main/git |
+| Git      | [点这儿](https://github.com/ZhuqiShawn/tech-note/tree/main/git)|
 
 个人平台：
 + [Bilibili](https://space.bilibili.com/181492373)
