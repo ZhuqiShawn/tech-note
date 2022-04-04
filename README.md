@@ -1,11 +1,11 @@
 # tech-note
-此repo存放一些技术的学习笔记
+In this repo, I store all notes related to learning different technologies. Although most of the notes are in `.md` file, this repo is created using [Obsidian](https://obsidian.md/), and it is also recommended to use Obsidian to open up the project. It will be more convenient and more readable. The `.obsidian` config file is included in the repo. 
 
-| 笔记内容 |                       链接                       |
-| :------- | :----------------------------------------------: |
-| Git      | [点这儿](https://github.com/ZhuqiShawn/tech-note/tree/main/git)|
-
-个人平台：
-+ [Bilibili](https://space.bilibili.com/181492373)
-+ 微信公众号：是小恩啊
-![local](git/img/公众号.png)
+## Table of Contents
+| Contents |                             Link                              |
+|:-------- |:-------------------------------------------------------------:|
+| Git      | [Link](https://github.com/ZhuqiShawn/tech-note/tree/main/Git) |
+| Docker   | [Link](https://github.com/ZhuqiShawn/tech-note/tree/main/Docker) |
+| Cloud    |                                                               |
+| Linux    |                                                               |
+|          |                                                               |
