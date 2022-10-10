@@ -4,8 +4,8 @@ In this repo, I store all notes related to learning different technologies. Alth
 ## Table of Contents
 | Contents |                             Link                              |
 |:-------- |:-------------------------------------------------------------:|
-| Git      | [Link](https://github.com/ZhuqiShawn/tech-note/tree/main/Git) |
-| Docker   | [Link](https://github.com/ZhuqiShawn/tech-note/tree/main/Docker) |
+| Git      | [Link](https://github.com/ZhuqiShawn/tech-note/blob/main/git/Git%20%26%20Github.md) |
+| Docker   | [Link](https://github.com/ZhuqiShawn/tech-note/blob/main/Docker/Docker.md) |
 | Cloud    |                                                               |
 | Linux    |                                                               |
 |          |                                                               |
