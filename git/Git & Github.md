@@ -345,3 +345,44 @@ Hi xxxx! You've successfully authenticated, but GitHub does not provide shell ac
 + [码云Git大全](https://gitee.com/all-about-git)
 + [菜鸟教程Git教程](https://www.runoob.com/git/git-tutorial.html)
 
+## Basics
+|                     CMD                      | Note                                                         |
+| :------------------------------------------: | ------------------------------------------------------------ |
+|                git --version                 |                                                              |
+|          git config --global --edit          |                                                              |
+|  git config --global user.name "San Zhang"   |                                                              |
+| git config --global user.email abc@gmail.com |                                                              |
+|                                              |                                                              |
+|                  git status                  | Gives info on the current status of a git repo and its contents |
+|                   git init                   | To create a new git repo                                     |
+|             git add file1 file2              | To stage changes to be committed                             |
+|                  git add .                   | To stage all changes at once                                 |
+|         git commit -m "some message"         | To commit changes from staging area                          |
+|       git commit -a -m "some message"        | Combine last two cmds                                        |
+|              git commit --amend              | To modify the last commit                                    |
+|              git log --oneline               | Check different commits and display them briefly one line for each commit |
+|         git branch -d <branch-name>          | To delete a branch                                           |
+|         git branch -D <branch-name>          | To force to delete a branch                                  |
+|           git branch -m <new-name>           | To change the current branch to a new name                   |
+|                                              |                                                              |
+|                                              |                                                              |
+|                                              |                                                              |
+|                                              |                                                              |
+|                                              |                                                              |
+|                                              |                                                              |
+
+## Branching
+|              CMD              | Note                                             |
+| :---------------------------: | ------------------------------------------------ |
+|          git branch           | To view your existing branches                   |
+|   git branch <branch-name>    | To make a new branch based upon the current HEAD |
+|   git switch <branch-name>    | To switch branch                                 |
+|  git switch -c <branch-name>  | To create a new branch and switch to it          |
+|  git checkout <branch-name>   | To switch branch                                 |
+| git checkout -b <branch-name> | To create a new branch and switch to it          |
+|                               |                                                  |
+|                               |                                                  |
+|                               |                                                  |
+|                               |                                                  |
+|                               |                                                  |
+
