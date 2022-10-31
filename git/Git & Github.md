@@ -372,17 +372,24 @@ Hi xxxx! You've successfully authenticated, but GitHub does not provide shell ac
 |                                              |                                                              |
 
 ## Branching
-|              CMD              | Note                                             |
-| :---------------------------: | ------------------------------------------------ |
-|          git branch           | To view your existing branches                   |
-|   git branch <branch-name>    | To make a new branch based upon the current HEAD |
-|   git switch <branch-name>    | To switch branch                                 |
-|  git switch -c <branch-name>  | To create a new branch and switch to it          |
-|  git checkout <branch-name>   | To switch branch                                 |
-| git checkout -b <branch-name> | To create a new branch and switch to it          |
-|                               |                                                  |
-|                               |                                                  |
-|                               |                                                  |
-|                               |                                                  |
-|                               |                                                  |
+|              CMD              | Note                                                         |
+| :---------------------------: | ------------------------------------------------------------ |
+|          git branch           | To view your existing branches                               |
+|         git branch -v         | To view your existing branches with more details (Last commit) |
+|   git branch <branch-name>    | To make a new branch based upon the current HEAD             |
+|   git switch <branch-name>    | To switch branch                                             |
+|  git switch -c <branch-name>  | To create a new branch and switch to it                      |
+|  git checkout <branch-name>   | To switch branch                                             |
+| git checkout -b <branch-name> | To create a new branch and switch to it                      |
+|    git merge <branch-name>    | Fast-forward merge, merge the branch to the master branch    |
+|    git merge <branch-name>    | None-fast-forward merge when some is appended on the master branch after creating the branch. There will be a new commit. |
+|                               |                                                              |
+|                               |                                                              |
+|                               |                                                              |
 
+Whenever you encounter merge conflicts, follow these steps to resolve them:
+
+1. Open up the file(s) with merge conflicts
+2. Edit the file(s) to remove the conflicts. Decide which branch's content you want to keep in each conflict. Or keep the content from both. 
+3. Remove the conflict "markers" in the document
+4. Add your changes and then make a commit
