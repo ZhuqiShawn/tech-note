@@ -35,13 +35,13 @@
 
 记录文件每次的更新，可以对每个版本做一个快照，或是记录补丁文件，适合个人用，如RCS。
 
-![local](local.png)
+![local](img/local.png)
 
 ### 集中版本控制
 
 所有的版本数据都保存在服务器上，协同开发者从服务器上同步更新或上传自己的修改
 
-![integrate](integrate.png)
+![integrate](img/integrate.png)
 
 所有的版本数据都存在服务器上，用户的本地只有自己以前所同步的版本，如果不连网的话，用户就看不到历史版本，也无法切换版本验证问题，或在不同分支工作。而且，所有数据都保存在单一的服务器上，有很大的风险这个服务器会损坏，这样就会丢失所有的数据，当然可以定期备份。代表产品：SVN、CVS、VSS
 
@@ -49,7 +49,7 @@
 
 所有版本信息仓库全部同步到本地的每个用户，这样就可以在本地查看所有版本历史，可以离线在本地提交，只需在连网时push到相应的服务器或其他用户那里。由于每个用户那里保存的都是所有的版本数据，只要有一个用户的设备没有问题就可以恢复所有的数据，但这增加了本地存储空间的占用。
 
-![distributed](distributed.png)
+![distributed](img/distributed.png)
 
 > **Git与SVN最主要区别**
 >
@@ -90,7 +90,7 @@ Git是免费、开源的，最初Git是为辅助 Linux 内核开发的，来替�
   + 查看系统config `git config --system --list`
   + 查看当前用户（global）配置 `git config --global --list`
 
-![image-20210605201749602](image-20210605201749602.png)
+![image-20210605201749602](img/image-20210605201749602.png)
 
 ### 用户名与邮箱
 
@@ -126,7 +126,7 @@ WD(本地工作目录) -->|git add files|S(暂存区)
 
 本地的三个区域确切的说应该是git仓库中HEAD指向的版本：
 
-![WeChat2e45c72a3260d415571ca055ba5af6ab](WeChat2e45c72a3260d415571ca055ba5af6ab.png)
+![WeChat2e45c72a3260d415571ca055ba5af6ab](img/WeChat2e45c72a3260d415571ca055ba5af6ab.png)
 
 + Directory：使用Git管理的一个目录，也就是一个仓库，包含我们的工作空间和Git的管理空间
 + WorkSpace：需要通过Git进行版本控制的目录和文件，这些目录和文件组成了工作空间。 
@@ -143,7 +143,7 @@ git的工作流程一般是这样的：
 2. 将需要进行版本管理的文件放入暂存区域；
 3. 将暂存区域的文件提交到git仓库。
 
-因此，git管理的文件有三种状态：已修改（modiﬁed），已暂存（staged），已提交(committed)![WeChatec178a2ffb54d998fcce3dc17c1ac6ea](WeChatec178a2ffb54d998fcce3dc17c1ac6ea.png)
+因此，git管理的文件有三种状态：已修改（modiﬁed），已暂存（staged），已提交(committed)![WeChatec178a2ffb54d998fcce3dc17c1ac6ea](img/WeChatec178a2ffb54d998fcce3dc17c1ac6ea.png)
 
 ## Git 项目搭建
 
@@ -153,7 +153,7 @@ git的工作流程一般是这样的：
 
 日常使用只要记住下图6个命令：
 
-![WeChat3fff7add77163279e178cf861892bd87](WeChat3fff7add77163279e178cf861892bd87.png)
+![WeChat3fff7add77163279e178cf861892bd87](img/WeChat3fff7add77163279e178cf861892bd87.png)
 
 ### 本地仓库搭建
 
@@ -238,7 +238,7 @@ doc/*.txt				#会忽略 doc/notes.txt 但不包括 doc/server/arch.txt
 
 分支在GIT中相对较难，分支就是科幻电影里面的平行宇宙，如果两个平行宇宙互不干扰，那对现在的你 也没啥影响。不过，在某个时间点，两个平行宇宙合并了，我们就需要处理一些问题了！
 
-![WeChat42c026321ff7a395f06bc3b91a5a480f](WeChat42c026321ff7a395f06bc3b91a5a480f.png)
+![WeChat42c026321ff7a395f06bc3b91a5a480f](img/WeChat42c026321ff7a395f06bc3b91a5a480f.png)
 
 git分支中常用指令：
 
@@ -284,7 +284,7 @@ ssh-keygen -t rsa -C "github_account_id"
 
 之后的问题可以直接回车略过
 
-![image-20210606002948546](image-20210606002948546.png)
+![image-20210606002948546](img/image-20210606002948546.png)
 
 ssh文件创建成功后
 
@@ -294,7 +294,7 @@ open ~/.ssh
 
 弹出文件夹，找到并使用文本文件打开`id_rsa.pub`
 
-![image-20210606003325560](image-20210606003325560.png)
+![image-20210606003325560](img/image-20210606003325560.png)
 
 接下来，打开[GitHub](https://github.com/)网站并登陆，右上角点击头像，选Settings，接下来左边栏找到SSH and GPG keys
 
@@ -494,7 +494,7 @@ Both `git reset` and `git revert` help us reverse changes, but there is a signif
 
 They follow this pattern `<remote>/<branch>`. 
 
-+ `o`rigin/master` references the state of the master branch on the remote repo named origin. 
++ `origin/master` references the state of the master branch on the remote repo named origin. 
 + `upstream/logoRedesign` references the state of the logoRedesign branch on the remote named upstream (a common remote name)
 
 | CMD                                                          | Note                                                         |
@@ -529,6 +529,11 @@ Think of it as "please go and get the latest information from Github, but don't 
 
 ## Rebasing
 
+There are two main ways to use the **git rebase** command:
+
++ as an alternative to merging
++ as a cleanup tool
+
 Merge vs. Rebase
 
 The feature branch has a bunch of merge commits. If the master branch is very active, my feature branch's history is muddied
@@ -539,6 +544,29 @@ We can instead rebase the feature branch onto the master branch. This moves the 
 Instead of using a merge commit, rebasing rewrites history by creating new commits for each of the original feature branch commits.
 
 We can also wait until we are done with a feature and then rebase the feature branch onto the master branch.
+
+```shell
+git switch feature
+git rebase master
+```
+
+### Interactive Rebase
+
+Sometimes we want to rewrite, delete, rename, or even reorder commits (before sharing them). We can do this using interactive git rebase.
+
+Running git rebase with the `-i` option will enter the interactive mode, which allows us to edit commits, add files, drop commits, etc. Note that we need to specify how far back we want to rewrite commits. Also, notice that we are not rebasing onto another branch.  Instead, we are rebasing a series of commits onto the `HEAD` they currently are based on.
+
+Functions:
+
++ **pick** - use the commit
++ **reword** - use the commit, but edit the commit message
++ **edit** - use commit, but stop for amending
++ **fixup** - use commit contents but meld it into previous commit and discard the commit message
++ **drop** - remove commit
+
+| CMD                    | Note                                                 |
+| :--------------------- | ---------------------------------------------------- |
+| `git rebase -i HEAD~n` | Interactive rebase, with `n` commits before the HEAD |
 
 ## Interact with remote repo
 
