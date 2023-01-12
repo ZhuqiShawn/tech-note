@@ -35,13 +35,13 @@
 
 记录文件每次的更新，可以对每个版本做一个快照，或是记录补丁文件，适合个人用，如RCS。
 
-![local](local.png)
+![local](img/local.png)
 
 ### 集中版本控制
 
 所有的版本数据都保存在服务器上，协同开发者从服务器上同步更新或上传自己的修改
 
-![integrate](integrate.png)
+![integrate](img/integrate.png)
 
 所有的版本数据都存在服务器上，用户的本地只有自己以前所同步的版本，如果不连网的话，用户就看不到历史版本，也无法切换版本验证问题，或在不同分支工作。而且，所有数据都保存在单一的服务器上，有很大的风险这个服务器会损坏，这样就会丢失所有的数据，当然可以定期备份。代表产品：SVN、CVS、VSS
 
@@ -49,7 +49,7 @@
 
 所有版本信息仓库全部同步到本地的每个用户，这样就可以在本地查看所有版本历史，可以离线在本地提交，只需在连网时push到相应的服务器或其他用户那里。由于每个用户那里保存的都是所有的版本数据，只要有一个用户的设备没有问题就可以恢复所有的数据，但这增加了本地存储空间的占用。
 
-![distributed](distributed.png)
+![distributed](img/distributed.png)
 
 > **Git与SVN最主要区别**
 >
@@ -90,7 +90,7 @@ Git是免费、开源的，最初Git是为辅助 Linux 内核开发的，来替�
   + 查看系统config `git config --system --list`
   + 查看当前用户（global）配置 `git config --global --list`
 
-![image-20210605201749602](image-20210605201749602.png)
+![image-20210605201749602](img/image-20210605201749602.png)
 
 ### 用户名与邮箱
 
@@ -126,7 +126,7 @@ WD(本地工作目录) -->|git add files|S(暂存区)
 
 本地的三个区域确切的说应该是git仓库中HEAD指向的版本：
 
-![WeChat2e45c72a3260d415571ca055ba5af6ab](WeChat2e45c72a3260d415571ca055ba5af6ab.png)
+![WeChat2e45c72a3260d415571ca055ba5af6ab](img/WeChat2e45c72a3260d415571ca055ba5af6ab.png)
 
 + Directory：使用Git管理的一个目录，也就是一个仓库，包含我们的工作空间和Git的管理空间
 + WorkSpace：需要通过Git进行版本控制的目录和文件，这些目录和文件组成了工作空间。 
@@ -143,7 +143,7 @@ git的工作流程一般是这样的：
 2. 将需要进行版本管理的文件放入暂存区域；
 3. 将暂存区域的文件提交到git仓库。
 
-因此，git管理的文件有三种状态：已修改（modiﬁed），已暂存（staged），已提交(committed)![WeChatec178a2ffb54d998fcce3dc17c1ac6ea](WeChatec178a2ffb54d998fcce3dc17c1ac6ea.png)
+因此，git管理的文件有三种状态：已修改（modiﬁed），已暂存（staged），已提交(committed)![WeChatec178a2ffb54d998fcce3dc17c1ac6ea](img/WeChatec178a2ffb54d998fcce3dc17c1ac6ea.png)
 
 ## Git 项目搭建
 
@@ -153,7 +153,7 @@ git的工作流程一般是这样的：
 
 日常使用只要记住下图6个命令：
 
-![WeChat3fff7add77163279e178cf861892bd87](WeChat3fff7add77163279e178cf861892bd87.png)
+![WeChat3fff7add77163279e178cf861892bd87](img/WeChat3fff7add77163279e178cf861892bd87.png)
 
 ### 本地仓库搭建
 
@@ -238,7 +238,7 @@ doc/*.txt				#会忽略 doc/notes.txt 但不包括 doc/server/arch.txt
 
 分支在GIT中相对较难，分支就是科幻电影里面的平行宇宙，如果两个平行宇宙互不干扰，那对现在的你 也没啥影响。不过，在某个时间点，两个平行宇宙合并了，我们就需要处理一些问题了！
 
-![WeChat42c026321ff7a395f06bc3b91a5a480f](WeChat42c026321ff7a395f06bc3b91a5a480f.png)
+![WeChat42c026321ff7a395f06bc3b91a5a480f](img/WeChat42c026321ff7a395f06bc3b91a5a480f.png)
 
 git分支中常用指令：
 
@@ -284,7 +284,7 @@ ssh-keygen -t rsa -C "github_account_id"
 
 之后的问题可以直接回车略过
 
-![image-20210606002948546](image-20210606002948546.png)
+![image-20210606002948546](img/image-20210606002948546.png)
 
 ssh文件创建成功后
 
@@ -294,7 +294,7 @@ open ~/.ssh
 
 弹出文件夹，找到并使用文本文件打开`id_rsa.pub`
 
-![image-20210606003325560](image-20210606003325560.png)
+![image-20210606003325560](img/image-20210606003325560.png)
 
 接下来，打开[GitHub](https://github.com/)网站并登陆，右上角点击头像，选Settings，接下来左边栏找到SSH and GPG keys
 
@@ -344,211 +344,3 @@ Hi xxxx! You've successfully authenticated, but GitHub does not provide shell ac
 
 + [码云Git大全](https://gitee.com/all-about-git)
 + [菜鸟教程Git教程](https://www.runoob.com/git/git-tutorial.html)
-
-## Basics
-| CMD                                                          | Note                                                         |
-| :----------------------------------------------------------- | ------------------------------------------------------------ |
-| `git --version`                                              | Display current git version                                  |
-| `git config --global --edit`                                 | Open git global config file and then you can edit it         |
-| `git config --global user.name "San Zhang"`                  | Change global user name                                      |
-| `git config --global user.email abc@gmail.com`               | Change global user email                                     |
-| `git status`                                                 | Gives info on the current status of a git repo and its contents |
-| `git init`                                                   | To create a new git repo                                     |
-| `git add file1 file2`                                        | To stage changes to be committed                             |
-| `git add .`                                                  | To stage all changes at once                                 |
-| `git commit -m "some message"`                               | To commit changes from staging area                          |
-| `git commit -a -m "some message"` or `git commit -am "some message"` | Combine last two cmds                                        |
-| `git commit --amend`                                         | To modify the last commit                                    |
-| `git log --oneline`                                          | Check different commits and display them briefly one line for each commit |
-
-## Branching
-| CMD                             | Note                                                         |
-| :------------------------------ | ------------------------------------------------------------ |
-| `git branch`                    | To view your existing branches                               |
-| `git branch -v`                 | To view your existing branches with more details (Last commit) |
-| `git branch <branch-name>`      | To make a new branch based upon the current HEAD             |
-| `git branch -d <branch-name>`   | To delete a branch                                           |
-| `git branch -D <branch-name>`   | To force delete a branch                                     |
-| `git branch -m <new-name>`      | To change the current branch to a new name                   |
-| `git switch <branch-name>`      | To switch branch                                             |
-| `git switch -c <branch-name>`   | To create a new branch and switch to it                      |
-| `git checkout <branch-name>`    | To switch branch                                             |
-| `git checkout -b <branch-name>` | To create a new branch and switch to it                      |
-| `git merge <branch-name>`       | Fast-forward merge (master no change), merge the branch to the master branch |
-| `git merge <branch-name>`       | None-fast-forward merge when some is appended on the master branch after creating the branch. There will be a new commit. |
-|                                 |                                                              |
-|                                 |                                                              |
-|                                 |                                                              |
-
-
-
-Whenever you encounter merge conflicts, follow these steps to resolve them:
-
-1. Open up the file(s) with merge conflicts
-2. Edit the file(s) to remove the conflicts. Decide which branch's content you want to keep in each conflict. Or keep the content from both. 
-3. Remove the conflict "markers" in the document
-4. Add your changes and then make a commit
-
-## git diff
-
-**To view changes between commits, branches, files, our working directory, etc.** 
-
-It is used alongside commands like git status and git log, to get a better picture of a repository and how it has changed over time. 
-| CMD                                                          | Note                                                         |
-| :----------------------------------------------------------- | ------------------------------------------------------------ |
-| `git diff <file>`                                            | List all the changes in working directory that are not staged for the next commit |
-| `git diff HEAD <file>`                                       | List all changes in the working directory tree since your last commit |
-| `git diff --staged <file>` or `git diff --cached <file>`     | List the changes between the staging area and our last commit |
-| `git diff <branch-1> <branch-2>`or `git diff <branch-1>..<branch-2>` | List the chanegs between the tips of branch1 and branch2     |
-| `git diff <commit-hash-1> <commit-hash-2>`or `git diff <commit-hash-1>..<commit-hash-2>` | List the changes between two different commits               |
-|                                                              |                                                              |
-|                                                              |                                                              |
-
-## git stash
-
-When working on a new branch, you made some changes but haven't make any commits. Now you need to switch back to master/other branches, two case could happen:
-
-+ the changes come with me to the destination branch
-+ git won't let me switch if it detects potential conflicts (where `git stash` could be used)
-
-**Git pit provides an easy way of stashing these uncommitted changes so that we can return to them later, without having to maker unnecessary commits.** 
-
-| CMD                                | Note                                                         |
-| :--------------------------------- | ------------------------------------------------------------ |
-| `git stash`                        | Save changes that you are not yet ready to commit            |
-| `git stash pop`                    | Remove the most recently stashed changes in your stash and re-apply them to your working copy |
-| `git stash apply`                  | Apply whatever is stashed away, without removing it from the stash. This can be useful if you want to apply stashed changes to multiple branches |
-| `git stash list`                   | View all stashes                                             |
-| `git stash apply stash@{stash-id}` | (git assumes you want to apply the most recent stash when you run `git stash apply`) You can specify a particular `stash-id` to apply |
-| `git stash drop stash@{stash-id}`  | Delete a particular stash                                    |
-| `git stash clear`                  | Clear out all stahses                                        |
-
-## Time Traveling
-
-### git checkout
-
-`checkout` command can be used to create branches, switch to new branches, restore files, and undo history. 
-
-Note: 
-
-+ HEAD usually refers to a branch NOT a specific commit
-+ When we checkout a particular commit, HEAD points at that commit rather than at the branch pointer (**DETACHED HEAD**). Then you have a couple options:
-  + Stay in detached HEAD to examine the contents of the old commit. 
-  + Leave and go back to wherever you were before: reattach the HEAD
-  + Create a new branch and switch to it. You can now make and save changes, since HEAD is no longer detached.
-
-`git checkout` supports a slightly odd syntax for referencing previous commits relative to a particular commit.
-
-+ `HEAD~1` refers to the commit before `HEAD` (parent) 
-+ `HEAD~2` refers to 2 commits before `HEAD` (grandparent) 
-+ ...
-
-| CMD                                                    | Note                                                         |
-| ------------------------------------------------------ | ------------------------------------------------------------ |
-| `git checkout <commit-hash>`                           | View a previous commit                                       |
-| `git switch <branch-name>`                             | Re-attach HEAD: simply switch back to whatever branch you were on before |
-| `git switch -`                                         | Take you back to where you left off                          |
-| `git checkout HEAD <file>` or `git checkout -- <file>` | Revert the file back to whatever it looked like in last commit (to the HEAD), discard the chanegs |
-
-### git restore
-
-`git restore` is a brand new Git command that helps with **undoing operations**.
-Because it is so new, most of the existing Git tutorials and books do not mention it, but it is worth knowing!
-Recall that git checkout does a million different things, which many git users find very confusing. `git restore` was introduced alongside `git switch` as alternatives to some of the uses for checkout.
-
-| CMD                                         | Note                                                    |
-| ------------------------------------------- | ------------------------------------------------------- |
-| `git restore <file>`                        | Restore the file to the contents in the HEAD            |
-| `git restore --source <commit-hash> <file>` | Restore the file to the contents in a particular commit |
-| `git restore --staged <file>`               | Remove unwanted file(s) in current staged file(s)       |
-
-### git reset
-
-Suppose you've just made a couple of commits on the master branch, but you actually meant to make them on a separate branch instead. To undo those commits, you can use `git reset`. 
-
-| CMD                              | Note                                                         |
-| -------------------------------- | ------------------------------------------------------------ |
-| `git reset <commit-hash>`        | Reset the repo back to a specific commit. The commits are gone. |
-| `git reset --hard <commit-hash>` | Undo both the commits AND the actual changes in your files   |
-
-### git revert
-
-`git revert` is similar to `git reset` in that they both "undo" changes, but they accomplish it in different ways. 
-
-`git reset` actually moves the branch pointer backwards, eliminating commits. 
-
-`git revert` instead creates a brand new commit which reverses/undos the changes from a commit.  Because it results in a new commit, you will be prompted to enter a commit message.
-
-Both `git reset` and `git revert` help us reverse changes, but there is a significant difference when it comes to collaboration:
-
-+ If you want to reverse some commits that other people already have on their machines, you should use revert.
-+ If you want to reverse commits that you haven't shared with others, use reset and no one will ever know!
-
-## Remote Tracking Branches
-
-![image-20221120210834051](/Users/zqxiao/Desktop/tech-note/Git/img/Git & Github/image-20221120210834051.png)
-
-`master`: A regular branch reference. I can move this around myself.
-
-`origin/master`: This is a "Remote Tracking Branch". It's a reference to the state of the master branch on the remote. I can't move this myself. It's like a bookmark pointing to the last known commit on the master branch on origin. At the time you last communicated with this remote repository, here is where x branch was pointing.
-
-They follow this pattern `<remote>/<branch>`. 
-
-+ `o`rigin/master` references the state of the master branch on the remote repo named origin. 
-+ `upstream/logoRedesign` references the state of the logoRedesign branch on the remote named upstream (a common remote name)
-
-| CMD                                                          | Note                                                         |
-| ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `git branch -r`                                              | View the remote branches our local repository knows about    |
-| `git checkout origin/master`                                 | Checkout these remote branch pointers                        |
-| `git switch <remote-branch-name>`<br />or <br />`git checkout --track origin/remote-branch-name` | Create a new local branch from the remote branch of the same name |
-
-### Fetching
-
-Fetching allows us to download changes from a remote repository, BUT those changes will not be automatically integrated into our working files. 
-
-It lets you see what others have been working on, without having to merge those changes into your local repo.
-
-Think of it as "please go and get the latest information from Github, but don't screw up my working directory."
-
-![image-20221120215004967](/Users/zqxiao/Desktop/tech-note/Git/img/Git & Github/image-20221120215004967.png)
-
-| CMD                           | Note                                                         |
-| ----------------------------- | ------------------------------------------------------------ |
-| `git fetch <remote> <branch>` | Fetch branches and history from a specific remote repository. It only updates remote tracking branches |
-| `git fetch origin`            | Fetch all changes from the origin remote repository          |
-
-### Pulling
-
-`git pull` is another command we can use to retrieve changes from a remote repository. Unlike fetch, pull actually updates our HEAD branch with whatever changes are retrieved from the remote.
-"go and download data from Github AND immediately update my local repo with those changes"
-
-| CMD                          | Note                      |
-| ---------------------------- | ------------------------- |
-| `git pull <remote> <branch>` | `git fetch` + `git merge` |
-
-## Rebasing
-
-Merge vs. Rebase
-
-The feature branch has a bunch of merge commits. If the master branch is very active, my feature branch's history is muddied
-
-![image-20221120234210102](/Users/zqxiao/Desktop/tech-note/Git/img/Git & Github/image-20221120234210102.png)
-
-We can instead rebase the feature branch onto the master branch. This moves the entire feature branch so that it BEGINS at the tip of the master branch. All of the work is still there, but we have re-written history.
-Instead of using a merge commit, rebasing rewrites history by creating new commits for each of the original feature branch commits.
-
-We can also wait until we are done with a feature and then rebase the feature branch onto the master branch.
-
-## Interact with remote repo
-
-| CMD                                                | Note                                                         |
-| :------------------------------------------------- | ------------------------------------------------------------ |
-| `git remote -v`                                    | View any existing remotes for you repository                 |
-| `git remote add <name> <url>`                      | Add a new remote. Name is typically `origin`                 |
-| `git remote rename <old> <new>`                    | Rename a remote                                              |
-| `git remote remove <name>`                         | Remove a remote                                              |
-| `git push <remote> <local-branch>`                 | Make a push to a local branch up to a remote branch of the same name |
-| `git push <remote> <local-branch>:<remote-branch>` | Make a push to a local branch up to a remote branch of the different name |
-| `git push -u`                                      | The `-u` option allows us to set the upstream of the branch we're pushing<br />Running `git push -u origin master` sets the upsteam of the local master branch so that it tracks the master branch on the origin repo, then next time we only need to do `git push` |
-|                                                    |                                                              |
