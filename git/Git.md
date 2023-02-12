@@ -1,3 +1,7 @@
+# Git Bootcamp from Udemy
+
+[toc]
+
 ## Basics
 
 | CMD                                                          | Note                                                         |
@@ -236,3 +240,116 @@ Functions:
 | `git push <remote> <local-branch>:<remote-branch>` | Make a push to a local branch up to a remote branch of the different name |
 | `git push -u`                                      | The `-u` option allows us to set the upstream of the branch we're pushing<br />Running `git push -u origin master` sets the upsteam of the local master branch so that it tracks the master branch on the origin repo, then next time we only need to do `git push` |
 |                                                    |                                                              |
+
+## Tags
+
+Tags are pointers that refer to particular points in Git history. We can mark a particular moment in time with a tag. Tags are most often used to mark version releases in projects (*v4.1.0*, *v4.1.1*, etc.)
+
+Think of tags as branch references that do NOT CHANGE. Once a tag is created, it always refers to the same commit. **It's just a label for a commit.**
+
+![image-20230211155658618](img/udemy/git-tags.png)
+
+There are two types of Git tags we can use: 
+
++ **lightweight tags**: just a name/label that points to a particular commit
++ **annotated tags**: store extra meta data including the author's name and email, the date, and a tagging message (like a commit message)
+
+> **Semantic Versioning**:
+>
+> The semantic versioning spec outlines a standardized versioning system for software releases. It provides a consistent way for developers to give meaning to their software releases (how big of a change is this release ??) Versions consist of three numbers separated by periods.
+>
+> ![image-20230211160525682](img/udemy/semantic_versioning.png)
+>
+> + **Patch releases**: normally do not contain new features or significant changes. They typically signify bug fixes and other changes that do not impact how the code is used
+> + **Minor releases**: signify that new features or functionality have been added, but the project is still backwards compatible. No breaking changes. The new functionality is optional and should not force users to rewrite their own is code.
+> + **Major releases**: signify significant changes that is no longer backwards compatible. Features may be removed or changed substantially.
+
+| CMD                          | Note                                                         |
+| :--------------------------- | ------------------------------------------------------------ |
+| `git tag`                    | Print a list of all the tags in the current repository       |
+| `git tag -l "*beta*"`        | Search for tags that match a particular wildcard pattern. <br />For example, The one on the left will print a list of tags that include "beta" in their name. |
+| `git checkout <tag>`         | View the state of a repo at a particular tag                 |
+| `git diff <tag1> <tag2>`     | Check out the difference between two tages/versions          |
+| `git tag <tagname>`          | To create a **lightweight** tag, <br />By default, Git will create the tag referring to the commit that HEAD is referencing. |
+| `git tag -a <tagname>`       | To create a **annotated** tag<br />Similar to git commit, we can also use the `-m` option to pass a message directly and forgo the opening of the text editor |
+| `git show <tagname>`         | See more information about a particular tag                  |
+| `git tag <tagname> <commit>` | Tag an older commit by providing the cimmit hash             |
+| `git tag -f <tagname>`       | Force to change the exisiting `<tagname>` to a new commit    |
+| `git tag -d <tagname>`       | Delete a existing tag                                        |
+| `git push --tags`            | Transfer all of your tags to the remote server that are not already there.<br />By default, the `git push` command doesnt transfer tags to remote servers. |
+| `git push <tagname>`         | To push one tag                                              |
+
+## What is in .git?
+
+![image-20230212122110058](img/udemy/in-git.png)
+
+**Note**: There's more, but this is the juicy stuff
+
+### config
+
+The config file is for configuration. We've seen how to configure global settings like our name and email across all Git repos, but we can also configure things on a per-repo basis.
+
+[Reference link: git-config](https://git-scm.com/docs/git-config)
+
+### refs Folder
+
++ Inside of refs, you'll find a **heads** directory. `refs/heads` contains one file per branch in a repository. Each file is named after a branch and contains the **hash of the commit** at the tip of the branch. E.g. `refs /heads/master` contains the commit hash of the last commit on the master branch. 
++ Refs also contains a `refs/tags` folder which contains one file for each tag in the repo.
++ Refs also contains a `refs/remotes` folder which contains different remotes have been set up.
+
+### HEAD File
+
+HEAD is just a text file that keeps track of where HEAD points.
+
++ If it contains `refs/heads/master`, this means that HEAD is pointing to the master branch.
++ In detached HEAD, the HEAD file contains a commit hash instead of a branch reference.
+
+### objects Folder
+
+The objects directory contains all the repo files. This is where Git stores the backups of files, the commits in a repo, and more. The files are all compressed and encrypted, so they won't look like much!
+
+> **Hashing Functions**
+>
+> Hashing functions are functions that map input data of some arbitrary size to fixed-size output values.
+>
+> ![image-20230212162623853](img/udemy/hashing_function.png)
+>
+> **Cryptographic Hash Function**
+>
+> + One-way function which is infeasible to invert
+> + Small change in input yields large change in the output
+> + Deterministic: same input yields same output
+> + Unlikely to find 2 outputs with same value
+
+Git is a **key-value data store**. We can insert any kind of content into a Git repository, and cit will hand us back a unique key we can later use to retrieve that content. These keys that we get back are SHA-1 checksums.
+
+Git uses a hashing function called **SHA-1** (though this is set to change eventually).Git uses SHA-1 to hash our files, directories, and commits.
+
++ SHA-1 always generates 40-digit hexadecimal numbers. 
++ The commit hashes we've seen a million times are the output of SHA-1
+
+**Four types of Git objects:**
+
++ Git **blobs** (binary large object) are the object type Git uses to store the contents of files in a given repository. Blobs don't even include the filenames of each file or any other data. They just store the contents of a file!
+  <img src="img/udemy/git-objects-blobs.png" alt="image-20230212214235340" style="zoom: 50%;" />
+
+| CMD                                        | Note                                                         |
+| :----------------------------------------- | ------------------------------------------------------------ |
+| `git hash-object <file>`                   | Takes some data, stores in in our .git/objects directory and gives us back the unique SHA-1 hash that refers to that data object.<br />In the simplest form (show on the left), Git simply takes some content and returns the unique key that WOULD be used to store our object. But it does not actually store anything. |
+| `echo "hello" | git hash-object --stdin`   | The `--stdin` option tells `git hash-object` to use the content from stdin rather than a file. In the example, it will hash the word "hello" |
+| `echo "hello" |git hash-object --stdin -w` | Rather than simply outputting the key that git would store our object under, we can use the `-w` option to tell git to actually write the object to the database. <br />After running this command, check out the contents of **.git/objects** |
+| `git cat-file -p <object-hash>`            | Retrieve the stored data in .git/objects database. <br />The `-p` option tells Git to pretty print the contents of the object based on its type |
+| `git cat-file -t <object-hash>`            | Tell the type of this hash object                            |
+
++ **Trees** are Git objects used to store the contents of al directory. Each tree contains pointers that can refer to blobs and to other trees.
+  Each entry in a tree contains the SHA-1 hash of a blob or tree, as well as the mode, type, and filename.
+  ![image-20230212214746258](img/udemy/git-objects-tree.png)
+
+| CMD                             | Note                                                         |
+| :------------------------------ | ------------------------------------------------------------ |
+| `git cat-file -p master^{tree}` | Print out the tree object that is pointed to by the tip of our master branch |
+
++ **Commit** objects combine a tree object along with information about the context that led to the current tree. Commits store a reference to parent commit(s), the author, the commiter and of course the commit message!
+  ![image-20230212220403406](img/udemy/git-object-commit.png)
+
++ **Annotated tag**
